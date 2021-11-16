@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "students#index"
   get "/students/new", to: "students#new"
   get "/students/edit/:id", to: "students#edit"
+  get "/students/destroy/:id", to: "students#destroy"
   get "/students", to: "students#index"
   get "/students/functions", to: "students#functions"
   get "/students/worked_teacher_student_list", to: "students#worked_teacher_student_list"
