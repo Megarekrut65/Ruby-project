@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Students list</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      .myImg{
+          width: 100%;
+          height: 150px;
+      }
+      .grayBackground{
+          background: #eeeeee;
+      }
+      .whiteBackground{
+          background: #F7F7F7;
+      }
+  </style>
+</head>
+
+<body>
+<img class="myImg" src="https://www.pikpng.com/pngl/b/603-6034862_header-banner-png-banner-images-header-png-clipart.png" alt="header">
+<div class="container grayBackground">
+  <div class="row bg-dark">
+    <div class="col">
+      <nav class="navbar navbar-expand-lg navbar-pr navbar-dark justify-content-center">
+        <div class="navbar-brand">Menu</div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/students">Students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/students/functions">Functions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Info</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row align-items-center whiteBackground">
+    <div class="col">
+      <p><h1>Students that finished teacher PTU</h1></p>
+      <table class="table table-hover">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th class="text-center" scope="col">Name</th>
+          <th class="text-center" scope="col">Need Dormitory?</th>
+          <th class="text-center" scope="col">Experience</th>
+          <th class="text-center" scope="col">Was teacher?</th>
+          <th class="text-center" scope="col">What graduated?</th>
+          <th class="text-center" scope="col">Language</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @res.each do |s| %>
+          <tr>
+            <th scope="row"><%= s.id%></th>
+            <td class="text-center"><%= s.name %></td>
+            <td class="text-center"><%= Student.bool_to_str(s.need_dormitory) %></td>
+            <td class="text-center"><%= s.experience %> year(s)</td>
+            <td class="text-center"><%= Student.bool_to_str(s.was_teacher) %></td>
+            <td class="text-center"><%= s.what_graduated %></td>
+            <td class="text-center"><%= s.language %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
