@@ -1,0 +1,52 @@
+<%= form_with model:@student do |form| %>
+  <table>
+    <tr>
+      <td><%= form.label :name %></td>
+      <td>
+        <%= form.text_field :name %>
+        <% @student.errors.full_messages_for(:name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= form.label :need_dormitory %></td>
+      <td><%= form.check_box :need_dormitory %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :experience %></td>
+      <td>
+        <%= form.number_field :experience %>
+        <% @student.errors.full_messages_for(:experience).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= form.label :was_teacher %></td>
+      <td><%= form.check_box :was_teacher %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :what_graduated %></td>
+      <td>
+        <%= form.text_field :what_graduated %>
+        <% @student.errors.full_messages_for(:what_graduated).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= form.label :language %></td>
+      <td>
+        <%= form.text_field :language %>
+        <% @student.errors.full_messages_for(:language).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
+<%end %>

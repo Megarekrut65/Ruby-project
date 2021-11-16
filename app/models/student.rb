@@ -1,4 +1,11 @@
 class Student < ApplicationRecord
+  validates :name, length: { minimum: 1 }
+  # validates :need_dormitory
+  validates :experience, numericality: { minimum: 0 }
+  # validates :was_teacher
+  validates :what_graduated, length: { minimum: 1 }
+  validates :language, length: { minimum: 1 }
+
   def self.bool_to_str(bool)
     if bool
       'Yes'
@@ -6,10 +13,4 @@ class Student < ApplicationRecord
       'No'
     end
   end
-  validates :name, presence: true, length: { minimum: 1 }
-  validates :need_dormitory, presence: true
-  validates :experience, presence: true, numericality: { minimum: 0 }
-  validates :was_teacher, presence: true
-  validates :what_graduated, presence: true, length: { minimum: 1 }
-  validates :language, presence: true, length: { minimum: 1 }
 end
