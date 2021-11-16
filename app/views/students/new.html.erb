@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Students</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .myImg{
+        width: 100%;
+        height: 150px;
+    }
+    .grayBackground{
+        background: #eeeeee;
+    }
+    .whiteBackground{
+        background: #F7F7F7;
+    }
+  </style>
+</head>
+
+<body class="grayBackground">
+<img class="myImg" src="https://www.pikpng.com/pngl/b/603-6034862_header-banner-png-banner-images-header-png-clipart.png" alt="header">
+<div class="container grayBackground">
+ <div class="row bg-dark">
+    <div class="col">
+      <nav class="navbar navbar-expand-lg navbar-pr navbar-dark justify-content-center">
+        <div class="navbar-brand">Menu</div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/students">Students<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/students/functions">Functions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Info</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row whiteBackground">
+    <div class="col">
+      <br>
+      <%= form_with model:@student do |form| %>
+        <table>
+          <tr>
+            <td><%= form.label :name %></td>
+            <td>
+              <%= form.text_field :name %>
+              <% @student.errors.full_messages_for(:name).each do |message| %>
+                <div><%= message %></div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= form.label :need_dormitory %></td>
+            <td><%= form.check_box :need_dormitory %></td>
+          </tr>
+          <tr>
+            <td><%= form.label :experience %></td>
+            <td>
+              <%= form.number_field :experience %>
+              <% @student.errors.full_messages_for(:experience).each do |message| %>
+                <div><%= message %></div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= form.label :was_teacher %></td>
+            <td><%= form.check_box :was_teacher %></td>
+          </tr>
+          <tr>
+            <td><%= form.label :what_graduated %></td>
+            <td>
+              <%= form.text_field :what_graduated %>
+              <% @student.errors.full_messages_for(:what_graduated).each do |message| %>
+                <div><%= message %></div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= form.label :language %></td>
+            <td>
+              <%= form.text_field :language %>
+              <% @student.errors.full_messages_for(:language).each do |message| %>
+                <div><%= message %></div>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <div>
+          <%= form.submit %>
+        </div>
+      <%end %>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

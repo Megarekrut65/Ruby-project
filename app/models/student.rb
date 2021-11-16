@@ -6,4 +6,10 @@ class Student < ApplicationRecord
       'No'
     end
   end
+  validates :name, presence: true, length: { minimum: 1 }
+  validates :need_dormitory, presence: true
+  validates :experience, presence: true, numericality: { minimum: 0 }
+  validates :was_teacher, presence: true
+  validates :what_graduated, presence: true, length: { minimum: 1 }
+  validates :language, presence: true, length: { minimum: 1 }
 end

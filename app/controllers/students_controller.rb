@@ -27,7 +27,7 @@ class StudentsController < ApplicationController
     students.each do |s|
       i = nil
       @res.each_index do |index|
-        if @res[index].include? s.language
+        if @res[index].downcase.include? s.language.downcase
           i = index
           break
         end
@@ -38,5 +38,28 @@ class StudentsController < ApplicationController
         @res << "#{@res.size + 1}) #{s.language}: #{s.name}"
       end
     end
+  end
+
+  def show
+    @student = Student.find(params[:id])
+  end
+
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.new(student_params)
+
+    if @student.save
+      redirect_to @student
+    else
+      render :new
+    end
+  end
+
+  private
+  def student_params
+    params.require(:student).permit(:name, :need_dormitory, :experience, :was_teacher, :what_graduated, :language)
   end
 end
